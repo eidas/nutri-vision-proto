@@ -1,0 +1,28 @@
+name: nutri_vision
+description: Nutrition label scanner — reads JP/FDA/EU labels via native OCR
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.19.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Live camera preview + image stream
+  camera: ^0.10.5+9
+  # File export / clipboard
+  path_provider: ^2.1.2
+  share_plus: ^7.2.2
+  # CSV serialisation
+  csv: ^5.1.1
+  # Date formatting in export filenames
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
