@@ -128,11 +128,14 @@ class _CameraScreenState extends State<CameraScreen>
     _navigateToResult(result);
   }
 
-  void _navigateToResult(NutritionData data) {
-    Navigator.of(context).push(
+  Future<void> _navigateToResult(NutritionData data) async {
+    // Await pop so OCR does not run while the result screen is visible,
+    // and auto-confirm cannot fire a second push in the background.
+    await Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => ResultScreen(data: data)),
     );
-    // Reset for re-scan when user comes back
+    if (!mounted) return;
+    // Reset and resume only after the user returns to this screen.
     setState(() {
       _confirmed = false;
       _bestResult = null;
